@@ -20,6 +20,7 @@ export const ProductGrid = ({ products, onDelete, onEdit }: Props) => {
     <DataGrid
       items={products}
       columns={columns(onEdit, onDelete)}
+      sortable
       getRowId={(p) => p.id}
     >
       <DataGridHeader>

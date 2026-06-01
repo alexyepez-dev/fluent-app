@@ -13,6 +13,7 @@ export const columns = (
 ) => [
   createTableColumn<Product>({
     columnId: "name",
+    compare: (a, b) => a.name.localeCompare(b.name),
     renderHeaderCell: () => "Producto",
     renderCell: (p) => (
       <TableCellLayout media={mapProductIcon(p.iconKey)}>
@@ -23,12 +24,14 @@ export const columns = (
 
   createTableColumn<Product>({
     columnId: "sku",
+    compare: (a, b) => a.sku.localeCompare(b.sku),
     renderHeaderCell: () => "SKU",
     renderCell: (p) => p.sku,
   }),
 
   createTableColumn<Product>({
     columnId: "price",
+    compare: (a, b) => a.price - b.price,
     renderHeaderCell: () => "Precio",
     renderCell: (p) => (
       <span className="font-semibold text-emerald-600">
@@ -39,6 +42,7 @@ export const columns = (
 
   createTableColumn<Product>({
     columnId: "stock",
+    compare: (a, b) => a.stock - b.stock,
     renderHeaderCell: () => "Existencias",
     renderCell: (p) => (
       <span
